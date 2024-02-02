@@ -1,0 +1,20 @@
+---
+- name: creating the directory /oracle-db
+  file:
+    path: /oracle-db
+    state: directory
+
+- name: creating the file testfile with in /oracle-db
+  copy:
+    content: "This is from Ansible roles \n"
+    dest: /oracle-db/testfile
+
+- name: copy the /etc/passwd file into /oralce-db
+  copy:
+    src: /etc/passwd
+    dest: /oracle-db/mypasswd
+
+- name: create the server report
+  template:
+    src: server.j2
+    dest: /oracle-db/server-report.txt
